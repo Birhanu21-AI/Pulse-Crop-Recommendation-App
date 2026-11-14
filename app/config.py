@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 class Settings(BaseSettings):
     model_path: Path = BASE_DIR / "model_artifacts" / "model.joblib"
-    api_key: SecretStr = SecretStr("") 
+    api_key: SecretStr = SecretStr("")  # remove the default to make it required
 
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env",
