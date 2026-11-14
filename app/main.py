@@ -26,7 +26,14 @@ app = FastAPI(
 )
 settings = get_settings()
 MODEL = joblib.load(settings.model_path)
-
+@app.api_route("/", methods=["GET", "HEAD"], include_in_schema=False)
+def root():
+    return {
+        "message": "Welcome to Pulse Crop Recommendation API",
+        "status": "running",
+        "documentation": "/docs",
+        "health": "/health",
+    }
 
 class PredictionInput(BaseModel):
 
