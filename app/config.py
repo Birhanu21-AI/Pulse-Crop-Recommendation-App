@@ -5,7 +5,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent
 
-
 class Settings(BaseSettings):
     model_path: Path = BASE_DIR / "model_artifacts" / "model.joblib"
     api_key: str = ""
@@ -16,7 +15,7 @@ class Settings(BaseSettings):
         extra="ignore",
         protected_namespaces=("settings_",),
     )
-    
+
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
